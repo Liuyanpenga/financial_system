@@ -9,6 +9,9 @@ module.exports = {
     devServer: {
       proxy: {
         '/api': {
+          // 日志
+          // logLevel:'debug',
+          // logProvider:() => console,
           target: 'http://1.116.64.64:5004/',
         }
       }

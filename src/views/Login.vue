@@ -22,6 +22,17 @@
 <script>
 import { login } from "@/api/user";
 export default {
+  mounted(){
+    this.enterFn=(e) => {
+      if(e.keyCode===13){
+        this.submitForm()
+      }
+    }
+    window.addEventListener('keypress',this.enterFn)
+  },
+  beforeDestroy(){
+    window.removeEventListener('keypress',this.enterFn)
+  },
   data() {
     return {
       ruleForm: {
@@ -35,14 +46,13 @@ export default {
     };
   },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate(async (valid) => {
+    submitForm() {
+      this.$refs.ruleForm.validate(async (valid) => {
         if (valid) {
           let [err,res] = await login(this.ruleForm)
-          if(err){
-            console.log('出错了',err)
-          }
-          console.log('成功了',res,err)
+          if(err) return;
+          // 登录后跳转到没登录前访问的菜单页面
+          this.$router.push(this.$route.query.redirect || '/')
         } else {
           console.log("error submit!!");
           return false;
