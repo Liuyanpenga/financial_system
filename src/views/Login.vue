@@ -8,8 +8,8 @@
         </el-form-item>
         <el-form-item prop="password">
           <el-input prefix-icon="el-icon-s-order" type="password" placeholder="password" v-model="ruleForm.password" autocomplete="off"></el-input>
-       </el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+        </el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
       </el-form>
       <div class="msg">
         Don't have account?
@@ -52,7 +52,7 @@ export default {
           let [err,res] = await login(this.ruleForm)
           if(err) return;
           // 登录后跳转到没登录前访问的菜单页面
-          this.$router.push(this.$route.query.redirect || '/')
+          this.$router.push(this.$route.query.redirect || '/').catch(()=>{}) // .catch解决控制台报错
         } else {
           console.log("error submit!!");
           return false;
