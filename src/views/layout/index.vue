@@ -16,8 +16,9 @@
       <el-container>
         <el-header>
           <EBread />
-
-          <div>admin</div>
+          <div>
+            <EDropdown trigger="hover" :title="userInfo?.roleType" @command="onCommand" :items="dropdownArr"/>
+          </div>
         </el-header>
         <el-main>
           <router-view />
@@ -29,15 +30,43 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+// import { logout } from "@/api/user";
+import { mapGetters,mapActions } from "vuex";
 export default {
   name: "Layout",
+  data() {
+    return {
+      dropdownArr: [{ key: "logout", icon: "el-icon-switch-button", text: "退出" }],
+    };
+  },
+  methods: {
+    ...mapActions('user',{
+      doLogout:'doLogout'
+    }),
+    async onCommand(e) {
+      switch (e) {
+        // 退出登录操作
+        case "logout":
+          // 粗暴写法
+          // await logout();
+          // window.sessionStorage.removeItem('token')
+          // window.location.reload();
+
+          // 交给Vuex来做
+          await this.doLogout()
+          // 跳转到登录页
+          this.$router.push({name:'login'})
+      }
+    },
+  },
+  // 高亮
   created() {
     this.defaultActive = this.$route.path;
   },
   computed: {
     ...mapGetters("user", {
       userMenu: "userMenu",
+      userInfo: "userInfo",
     }),
   },
 };

@@ -1,3 +1,5 @@
+import { logout } from "@/api/user";
+
 export default {
   state: {
     isLogin: false,
@@ -7,6 +9,9 @@ export default {
   getters: {
     userMenu(state) {
       return state.menu
+    },
+    userInfo(state){
+      return state.userInfo
     }
   },
   mutations: {
@@ -20,5 +25,15 @@ export default {
       state.menu = menu
     }
   },
-  actions: {}
+  actions: {
+    async doLogout({commit}){
+      await logout()
+      window.sessionStorage.removeItem('token')
+      // 选择性清空数据
+      commit('changeUserInfo',null)
+      commit('changeLogin',false)
+      commit('setMenu',[])
+      // 跳转
+    }
+  }
 }

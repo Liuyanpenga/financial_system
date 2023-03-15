@@ -12,7 +12,7 @@
 export default {
   name: "EBread",
   created() {
-    console.log(this.$route.matched);
+    // console.log(this.$route.matched);
   },
   computed: {
     breads() {

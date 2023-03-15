@@ -7,3 +7,4 @@ export const login = user => {
     data: user
   }))
 }
+export const logout = () => req.post('/user/logout')

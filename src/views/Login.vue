@@ -52,7 +52,7 @@ export default {
           let [err,res] = await login(this.ruleForm)
           if(err) return;
           // 登录后跳转到没登录前访问的菜单页面
-          this.$router.push(this.$route.query.redirect || '/').catch(()=>{}) // .catch解决控制台报错
+          this.$router.push(this.$route.query.redirect || '/home').catch(()=>{}) // .catch解决控制台报错
         } else {
           console.log("error submit!!");
           return false;
