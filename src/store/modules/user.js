@@ -2,10 +2,10 @@ export default {
   state: {
     isLogin: false,
     userInfo: {},
-    menu:[]
+    menu: []
   },
   getters: {
-    userMenu(state){
+    userMenu(state) {
       return state.menu
     }
   },
@@ -16,7 +16,7 @@ export default {
     changeLogin(state, login) {
       state.isLogin = login
     },
-    setMenu(state,menu){
+    setMenu(state, menu) {
       state.menu = menu
     }
   },

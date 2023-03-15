@@ -1,10 +1,16 @@
 [
   {
-    "path": "/",
+    "nonRenderChild":true,
+    "path":"/home",
     "meta":{
       "title":"首页"
-    }
-  },
+    }, 
+    "redirect":{ "name":"home" },
+    "component":"Layout",
+    "children":[
+      { "name":"home","path":"/home","component":"home/index" }
+    ]
+   },
   {
     "path": "/loan-input",
     "component": "Layout",

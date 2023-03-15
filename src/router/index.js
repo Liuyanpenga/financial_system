@@ -3,18 +3,12 @@ import { isLogin } from '@/utils'
 import Axios from 'axios'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import Notfound from '../views/featrue/404.vue'
 import Privilege from '../views/featrue/401.vue'
-
+import Layout from '../views/layout/index.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
   {
     path: '/about',
     name: 'about',
@@ -25,8 +19,9 @@ const routes = [
     name: 'login',
     component: () => import('../views/Login.vue')
   },
-  {path:'/notFound',name:'notFound',component:Notfound},
-  {path:'/privilege',name:'privilege',component:Privilege},
+  { path: '/notFound', name: 'notFound', component: Notfound },
+  { path: '/privilege', name: 'privilege', component: Privilege }
+
 ]
 
 const router = new VueRouter({
@@ -54,7 +49,7 @@ function loadAsyncRoutes() {
 function asyncRoutesHandler(routes) {
   return routes.map(route => {
     if (route.component === 'Layout') {
-      route.component = HomeView; // Layout
+      route.component = Layout;
     } else {
       // 子路由
       const filePath = route.component;
@@ -70,7 +65,7 @@ function asyncRoutesHandler(routes) {
 async function loadMenu(to, from, next) {
   // 请求菜单数据
   let res = await loadAsyncRoutes()
-  console.log('菜单数据', res)
+  // console.log('菜单数据', res)
   store.commit('user/setMenu', res.data)
   // 加载菜单
   const asyncRoutes = asyncRoutesHandler(res.data)
@@ -92,10 +87,10 @@ router.beforeEach((to, from, next) => {
   if (whiteList.includes(to.path)) return next()
   // 验证是否登录
   let decoded = isLogin()
-  console.log('解析的token', decoded)
+  // console.log('解析的token', decoded)
   if (isLogin()) {
     let roleType = convertRole(decoded.type)
-    console.log('交给Vuex管理的角色：', roleType)
+    // console.log('交给Vuex管理的角色：', roleType)
     // Vuex 存储用户数据
     store.commit('user/changeUserInfo', { roleType })
     store.commit('user/changeLogin', true)
