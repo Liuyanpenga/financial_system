@@ -8,7 +8,7 @@
           unique-opened
           background-color="#282d2f"
           text-color="#fff"
-          active-text-color="#64c5b1"
+          active-text-color="#0091ff"
         >
           <EMenu :item="item" v-for="item in userMenu" :key="item.path" />
         </el-menu>
@@ -78,7 +78,7 @@ export default {
 }
 .el-header,
 .el-footer {
-  background-color: #b3c0d1;
+  background-color: #2f3638;
   color: #333;
   text-align: center;
   line-height: 60px;
@@ -87,7 +87,7 @@ export default {
   align-items: center;
 }
 .el-header {
-  background-color: #64c5b1;
+  background-color: #2f3638;
 }
 .el-aside {
   background-color: #282d2f;
@@ -103,6 +103,5 @@ export default {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
-  line-height: 160px;
 }
 </style>

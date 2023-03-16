@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb separator="/">
+  <el-breadcrumb separator="/" class="bread">
     <el-breadcrumb-item v-for="(route, index) in breads" :key="route.path">
       <!-- 最后一个元素 就是span {{ route?.meta?.title }}  -->
       <span v-if="breads.length === index + 1">{{ route?.meta?.title }}</span>
@@ -22,4 +22,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+span,a{
+  color: #c9c6c7;
+}
+</style>

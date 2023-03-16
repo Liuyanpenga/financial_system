@@ -18,4 +18,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  .el-dropdown > span{
+    color: #fff;
+  }
+</style>
