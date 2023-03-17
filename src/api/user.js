@@ -8,3 +8,5 @@ export const login = user => {
   }))
 }
 export const logout = () => req.post('/user/logout')
+
+export const doCreateRole = (roleData) => req.post('/permission/createUser',roleData)

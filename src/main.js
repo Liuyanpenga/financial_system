@@ -10,7 +10,8 @@ import './assets/css/global.css'
 import EMenu from '@/components/EMenu.vue'
 import EBread from '@/components/EBread.vue'
 import EDropdown from '@/components/EDropdown.vue'
-import Echarts from './components/Echarts.vue';
+import ECharts from './components/ECharts.vue';
+import EForm from './components/EForm.vue';
 
 
 Vue.config.productionTip = false
@@ -21,7 +22,8 @@ Vue.prototype.$ajax = Axios
 Vue.component(EMenu.name, EMenu)
 Vue.component(EBread.name, EBread)
 Vue.component(EDropdown.name, EDropdown)
-Vue.component(Echarts.name, Echarts)
+Vue.component(ECharts.name, ECharts)
+Vue.component(EForm.name, EForm)
 
 new Vue({
   router,

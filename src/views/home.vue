@@ -29,10 +29,10 @@
 
 <script>
 import countTo from "vue-count-to";
-import Echarts from "@/components/Echarts.vue";
+import ECharts from "@/components/ECharts.vue";
 export default {
   name: "Home",
-  components: { countTo, Echarts },
+  components: { countTo, ECharts },
   data() {
     return {
       saleInfo: [
