@@ -26,6 +26,18 @@ export const columns = [
     align: 'center'
   },
   {
+    label:"自定义HTML",
+    align:"center",
+    formatter(){
+      return `
+        <div>
+          <h3>自定义内容</h3>
+          <button>按钮</button>
+        </div>
+      `
+    }
+  },
+  {
     label: "配送信息",
     children: [
       {

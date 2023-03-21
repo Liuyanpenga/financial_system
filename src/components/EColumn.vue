@@ -27,6 +27,15 @@ export default {
     const { item: column, $scopedSlots:tableSlots } = this;
     let scopedSlots
     // 从上传下来的插槽函数
+    if(column.formatter){
+      scopedSlots = {
+        // v-html
+        default:(prop) => {
+          let htmlStr = column.formatter(prop)
+          return <div class="custom-html" domPropsInnerHTML={htmlStr}></div>
+        }
+      }
+    }
     let slots = tableSlots[column.prop]
     if(slots){
       // 把内部组件数据暴露给外部调用者，然后外部调用者进行定制或加工
