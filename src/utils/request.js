@@ -1,10 +1,12 @@
 import Axios from "axios";
 import { Notification, Loading } from 'element-ui'
+import { transData, transPager } from "./transData";
 
 let service;
 const reqInstance = Axios.create({
   baseURL: '/api',
-  timeout: 5000
+  timeout: 5000,
+  transformResponse: [transPager, transData]
 })
 
 reqInstance.interceptors.request.use((config) => {
@@ -20,8 +22,8 @@ reqInstance.interceptors.response.use((response) => {
   service.close()
   // 获取并存储 token
   let token = response.data.data.token
-  window.sessionStorage.setItem('token', token)
-
+  // 没token不存储不然undefined
+  if(token) window.sessionStorage.setItem('token', token)
 
   return response
 }, err => {

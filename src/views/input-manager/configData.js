@@ -4,8 +4,8 @@ export const tableConfig = {
 }
 export const columns = [
   {
-    prop: "date",
-    label: "日期",
+    prop: "birthday",
+    label: "出生日期",
     width: 120,
     align: 'center'
   },
@@ -16,14 +16,32 @@ export const columns = [
     align: 'center'
   },
   {
-    prop: "address",
-    label: "地址",
+    prop:"sex",
+    label:"性别",
+    width:120,
+    align: 'center'
+  },
+  {
+    prop:"education",
+    label:"教育程度",
+    width:120,
+    align: 'center'
+  },
+  {
+    prop: "address1",
+    label: "居住地址",
+    align: 'center'
+  },
+  {
+    prop: "mobile_phone",
+    label: "手机号码",
     align: 'center'
   },
   {
     label: "操作",
     prop: "operation",
-    align: 'center'
+    align: 'center',
+    width:300
   },
   {
     label:"自定义HTML",
@@ -48,42 +66,5 @@ export const columns = [
         ],
       },
     ],
-  },
-]
-export const tableData = [
-  {
-    date: "2016-05-03",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路 1518 弄",
-  },
-  {
-    date: "2016-05-02",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路 1518 弄",
-  },
-  {
-    date: "2016-05-04",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路 1518 弄",
-  },
-  {
-    date: "2016-05-01",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路 1518 弄",
-  },
-  {
-    date: "2016-05-08",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路 1518 弄",
-  },
-  {
-    date: "2016-05-06",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路 1518 弄",
-  },
-  {
-    date: "2016-05-07",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路 1518 弄",
   },
 ]
