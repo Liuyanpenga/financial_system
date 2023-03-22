@@ -14,6 +14,8 @@ import ECharts from './components/ECharts.vue';
 import EForm from './components/EForm.vue';
 import ETable from './components/ETable.vue';
 import EColumn from './components/EColumn.vue';
+import {dragTable} from '@/directives/index'
+Vue.use(dragTable)
 
 
 Vue.config.productionTip = false

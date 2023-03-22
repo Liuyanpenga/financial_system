@@ -14,8 +14,11 @@ export default {
   methods:{
     renderTable() {
       const { $attrs:attrs, columns, config: { multipleSelection, index }, $scopedSlots:tableSlots} = this;
+      // jsx指令写法 {...{directives:directives}}
+      const directives = [{name:'drag'}]
+      
       return (
-        <el-table attrs={attrs}>
+        <el-table attrs={attrs}  {...{directives}}>
           // 渲染索引情况
           {index && <el-table-column label="序号" type="index" width="55" align="center"/>}
           // 渲染多选情况
