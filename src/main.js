@@ -14,6 +14,7 @@ import ECharts from './components/ECharts.vue';
 import EForm from './components/EForm.vue';
 import ETable from './components/ETable.vue';
 import EColumn from './components/EColumn.vue';
+import ESearch from './components/ESearch.vue';
 import {dragTable} from '@/directives/index'
 Vue.use(dragTable)
 
@@ -30,6 +31,7 @@ Vue.component(ECharts.name, ECharts)
 Vue.component(EForm.name, EForm)
 Vue.component(ETable.name, ETable)
 Vue.component(EColumn.name, EColumn)
+Vue.component(ESearch.name, ESearch)
 
 new Vue({
   router,

@@ -9,30 +9,62 @@ export default {
     config: {
       type: Object,
       required: true,
+    },
+    usePage: {
+      type: Boolean,
+    },
+    pager: {
+      type: Object,
+      default: () => ({}),
     }
   },
-  methods:{
+  methods: {
     renderTable() {
-      const { $attrs:attrs, columns, config: { multipleSelection, index }, $scopedSlots:tableSlots} = this;
+      const { $attrs: attrs, columns, config: { multipleSelection, index }, $scopedSlots: tableSlots, showLoading} = this;
+      console.log(showLoading)
       // jsx指令写法 {...{directives:directives}}
-      const directives = [{name:'drag'}]
-      
+      const directives = [{ name: "drag" }];
       return (
-        <el-table attrs={attrs}  {...{directives}}>
+        <el-table attrs={attrs} {...{ directives }}>
           // 渲染索引情况
-          {index && <el-table-column label="序号" type="index" width="55" align="center"/>}
+          {index && (
+            <el-table-column label="序号" type="index" width="55" align="center" />
+          )}
           // 渲染多选情况
-          {multipleSelection && <el-table-column type="selection" width="55" align="center"/>}
+          {multipleSelection && (
+            <el-table-column type="selection" width="55" align="center" />
+          )}
           // 渲染列
-          {columns && columns.map(col=>{
-            return <EColumn item={col} scopedSlots={tableSlots}/>
-          })}
+          {columns &&
+            columns.map((col) => {
+              return <EColumn item={col} scopedSlots={tableSlots} />;
+            })}
         </el-table>
+      );
+    },
+    // 渲染分页
+    renderPage() {
+      const { pager } = this
+      return (
+        <el-pagination
+          onSize-change={(e) => this.$emit('size-change',e)}
+          onCurrent-change={(e) => this.$emit('current-change',e)}
+          currentPage={pager.currentPage}
+          pageSizes={pager.currentPages}
+          pageSize={pager.pageSize}
+          layout={pager.layout}
+          total={pager.total}
+        ></el-pagination>
       );
     },
   },
   render() {
-    return this.renderTable();
+    return (
+      <div>
+        {this.renderTable()}
+        {this.usePage && this.renderPage()}
+      </div>
+    );
   },
 };
 </script>

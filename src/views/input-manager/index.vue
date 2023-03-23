@@ -1,36 +1,53 @@
 <template>
-  <ETable :data="tableData" :columns="columns" :config="tableConfig" border>
-    <template #operation="{ scope }">
-      <el-button type="primary">编辑</el-button>
-      <el-button type="danger">删除</el-button>
-      <el-button type="success">提交审核</el-button>
-    </template>
-  </ETable>
+  <div>
+    <ESearch placeholder="请输入条件" @setValue="setQuery" />
+    <ESearch placeholder="请输入条件" >
+      <template #btn="{query}">
+        <el-button type="primary" @click="setQuery(query)">查询</el-button>
+      </template>
+    </ESearch>
+
+    <ETable
+      border
+      usePage
+      :pager="frontPager"
+      :data="tableData"
+      :columns="columns"
+      :config="tableConfig"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    >
+      <template #operation="{ scope }">
+        <el-button type="primary">编辑</el-button>
+        <el-button type="danger">删除</el-button>
+        <el-button type="success">提交审核</el-button>
+      </template>
+    </ETable>
+  </div>
 </template>
 
 <script>
 import { tableConfig, columns } from "./configData";
-import { getLoanList } from "@/api/loan";
-let pager = {
-  // 页码
-  pageNo:1,
-  // 条数
-  pageSize:10,
-  // 查询条件
-  // name:name
-}
+import pager from '@/mixins/pager'
+import crud from '@/mixins/crud'
 export default {
   name: "Manger",
+  mixins:[pager,crud],
   data() {
     return {
       tableConfig,
       columns,
-      tableData:[],
+      tableData: [],
     };
   },
-  async created() {
-    let res = await getLoanList(pager)
-    this.tableData = res.data.data
+  created() {
+    this.load()
+  },
+  methods: {
+    beforeInit(){
+      this.loadUrl = '/loan/list'
+      return true
+    }
   },
 };
 </script>

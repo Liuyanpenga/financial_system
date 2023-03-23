@@ -16,20 +16,21 @@ export const columns = [
     align: 'center'
   },
   {
-    prop:"sex",
-    label:"性别",
-    width:120,
+    prop: "sex",
+    label: "性别",
+    width: 120,
     align: 'center'
   },
   {
-    prop:"education",
-    label:"教育程度",
-    width:120,
+    prop: "education",
+    label: "教育程度",
+    width: 120,
     align: 'center'
   },
   {
     prop: "address1",
     label: "居住地址",
+    width: 500,
     align: 'center'
   },
   {
@@ -40,13 +41,13 @@ export const columns = [
   {
     label: "操作",
     prop: "operation",
-    align: 'center',
-    width:300
+    width: 300,
+    align: 'center'
   },
   {
-    label:"自定义HTML",
-    align:"center",
-    formatter(){
+    label: "自定义HTML",
+    align: "center",
+    formatter() {
       return `
         <div>
           <h3>自定义内容</h3>

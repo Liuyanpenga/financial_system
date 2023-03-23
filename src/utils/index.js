@@ -50,3 +50,14 @@ export const deepClone = (obj) => {
   }
   return innerDeepClone(obj)
 }
+
+// 防抖
+export function debounce(fn, wait = 1000) {
+  let timer;
+  return function () {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      fn.call(this)
+    }, wait)
+  }
+}
