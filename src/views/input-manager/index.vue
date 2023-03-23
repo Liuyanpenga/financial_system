@@ -17,7 +17,20 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     >
-      <template #operation="{ scope }">
+      <template #birthday="{row}">
+        <span>{{ row.birthday | date }}</span>
+      </template>
+      <template #sex="{row}">
+        {{ row.sex }}
+        <span>{{ row.sex | sex }}</span>
+      </template>
+      <template #education="{row}">
+        <span>{{ row.education | education }}</span>
+      </template>
+      <template #status="{row}">
+        <el-tag :type="row.status | statusColor">{{ row.status | status }}</el-tag>
+      </template>
+      <template #operation="{ row }">
         <el-button type="primary">编辑</el-button>
         <el-button type="danger">删除</el-button>
         <el-button type="success">提交审核</el-button>

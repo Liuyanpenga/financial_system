@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 import Axios from 'axios';
+import 'element-ui/lib/theme-chalk/index.css';
 import './assets/css/cssreset.css'
 import './assets/css/global.css'
 import EMenu from '@/components/EMenu.vue'
@@ -16,7 +16,9 @@ import ETable from './components/ETable.vue';
 import EColumn from './components/EColumn.vue';
 import ESearch from './components/ESearch.vue';
 import {dragTable} from '@/directives/index'
+import tableFilter from '@/filters/index'
 Vue.use(dragTable)
+Vue.use(tableFilter)
 
 
 Vue.config.productionTip = false

@@ -1,13 +1,14 @@
 import jwtDecode from "jwt-decode";
 
+// 处理 token
 export const isLogin = () => {
   // 判断是否登录就是判断是否有 token
   let token = window.sessionStorage.getItem('token')
   if (!token) return false;
   // 解析 token
   return jwtDecode(token, 'jindu520')
-
 }
+// 深拷贝
 export const deepClone = (obj) => {
   // 处理环形对象带来的递归栈内存溢出
   let cache = new WeakMap(); // 避免强引用
@@ -50,7 +51,6 @@ export const deepClone = (obj) => {
   }
   return innerDeepClone(obj)
 }
-
 // 防抖
 export function debounce(fn, wait = 1000) {
   let timer;
@@ -60,4 +60,16 @@ export function debounce(fn, wait = 1000) {
       fn.call(this)
     }, wait)
   }
+}
+// 日期处理
+export function plusZero(n){
+  return n > 10 ? n : '0' + n
+}
+export function dateConvert(dateStr){
+  const date = new Date(dateStr)
+  const year = date.getFullYear()
+  const month = date.getMonth()
+  const day = date.getDate()
+  const minute = date.getMinutes()
+  return year + '-' + plusZero(month) + '-' + plusZero(day)
 }

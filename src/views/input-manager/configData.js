@@ -30,12 +30,17 @@ export const columns = [
   {
     prop: "address1",
     label: "居住地址",
-    width: 500,
+    width: 200,
     align: 'center'
   },
   {
     prop: "mobile_phone",
     label: "手机号码",
+    align: 'center'
+  },
+  {
+    label: '申请状态',
+    prop: 'status',
     align: 'center'
   },
   {
