@@ -10,7 +10,7 @@ const reqInstance = Axios.create({
 })
 
 reqInstance.interceptors.request.use((config) => {
-  service = Loading.service()
+  // service = Loading.service()
   // 再次请求时获取缓存的并设置请求头 token
   let token = window.sessionStorage.getItem('token')
   if (token) config.headers['token'] = token
@@ -19,7 +19,7 @@ reqInstance.interceptors.request.use((config) => {
 
 reqInstance.interceptors.response.use((response) => {
   // 业务处理
-  service.close()
+  // service.close()
   // 获取并存储 token
   let token = response.data.data.token
   // 没token不存储不然undefined
@@ -27,7 +27,7 @@ reqInstance.interceptors.response.use((response) => {
 
   return response
 }, err => {
-  service.close()
+  // service.close()
 
   // 状态码非200 错误提示
   Notification.error(err.message)

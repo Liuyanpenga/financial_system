@@ -2,7 +2,7 @@ import req from "@/utils/request";
 export default {
   data() {
     return {
-      
+      showLoading:false
     }
   },
   methods: {

@@ -20,10 +20,10 @@ export default {
   },
   methods: {
     renderTable() {
-      const { $attrs: attrs, columns, config: { multipleSelection, index }, $scopedSlots: tableSlots, showLoading} = this;
+      const { $attrs: attrs, columns, config: { multipleSelection, index }, $scopedSlots: tableSlots, $parent: { showLoading } } = this;
       console.log(showLoading)
       // jsx指令写法 {...{directives:directives}}
-      const directives = [{ name: "drag" }];
+      const directives = [{ name: "drag" },{ name:'loading' , value:showLoading}];
       return (
         <el-table attrs={attrs} {...{ directives }}>
           // 渲染索引情况
