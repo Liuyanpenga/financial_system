@@ -4,7 +4,8 @@ export const login = user => {
   return pretty(req({
     method: 'post',
     url: '/user/login',
-    data: user
+    data: user,
+    fullLoading:true
   }))
 }
 export const logout = () => req.post('/user/logout')
