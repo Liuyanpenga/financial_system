@@ -15,10 +15,14 @@ import EForm from './components/EForm.vue';
 import ETable from './components/ETable.vue';
 import EColumn from './components/EColumn.vue';
 import ESearch from './components/ESearch.vue';
+
 import {dragTable} from '@/directives/index'
 import tableFilter from '@/filters/index'
+import eplugin from '@/plugins/index'
+
 Vue.use(dragTable)
 Vue.use(tableFilter)
+Vue.use(eplugin)
 
 
 Vue.config.productionTip = false

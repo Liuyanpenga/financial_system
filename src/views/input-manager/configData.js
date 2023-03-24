@@ -1,3 +1,4 @@
+import { TEXT, SELECT } from "@/conf/uiTypes";
 export const tableConfig = {
   multipleSelection: true,
   index: true,
@@ -74,3 +75,28 @@ export const columns = [
     ],
   },
 ]
+
+const sexOptions = [
+  { value: "man", label: "男" },
+  { value: "woman", label: "女" }
+];
+
+
+export const genEditForm = function (row) {
+  return {
+    items: [
+      [{ label: '姓名', value: row.name, key: 'name', colSpan: 22, type: TEXT }],
+      [{
+        label: '性别', value: row.sex, key: 'sex', colSpan: 22, type: SELECT,
+        options: sexOptions
+      }],
+      [{ label: '地址', value: row.address1, key: 'address1', colSpan: 22, type: TEXT }],
+    ],
+    rules: {
+      name: [{ required: true, message: '请输入用户名', trigger: "blur" }],
+      sex: [{ required: true, message: '请输入性别', trigger: "blur" }],
+      address1: [{ required: true, message: '请输入居住地址', trigger: "blur" }],
+    }
+  }
+
+}

@@ -32,7 +32,7 @@ export default {
         this.reactiveFields(card.children);
       });
     } else if (items) {
-      this.reactiveFields(items.children);
+      this.reactiveFields(items);//修 bug
     }
   },
   methods: {
@@ -122,6 +122,9 @@ export default {
         );
       });
     },
+    getData() {
+      return deepClone(this.ruleForm)
+    },
     // 重置表单
     resetForm() {
       this.$refs.form.resetFields();
@@ -149,10 +152,7 @@ export default {
     },
   },
   render() {
-    const {
-      ruleForm,
-      $scopedSlots: { btn },
-    } = this;
+    const { ruleForm, $scopedSlots: { btn }} = this;
     const { items, rules, cards } = this.config;
     return (
       <div class="form-box">
