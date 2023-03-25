@@ -1,0 +1,42 @@
+<template>
+  <div>
+    <ETable
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :data="tableData"
+      border
+      :columns="columns"
+      :config="tableConfig"
+    >
+
+    </ETable>
+  </div>
+</template>
+
+<script>
+import crud from "@/mixins/crud";
+import pager from "@/mixins/pager";
+import { columns, tableConfig } from "./list.js";
+
+export default {
+  mixins: [pager, crud],
+  data() {
+    return {
+      columns,
+      tableConfig,
+      tableData: [],
+    };
+  },
+  created() {
+    this.load();
+  },
+  methods: {
+    beforeInit() {
+      this.loadUrl = "/user/list?type=new";
+      return true;
+    }
+  },
+};
+</script>
+
+<style></style>
