@@ -1,11 +1,12 @@
 <template>
   <div>
-    <ESearch placeholder="请输入条件" @setValue="setQuery" />
-    <ESearch placeholder="请输入条件">
+    <ESearch placeholder="请输入姓名查找" @setValue="setQuery" />
+    <!-- 按钮查询 -->
+    <!-- <ESearch placeholder="请输入姓名查找">
       <template #btn="{ query }">
         <el-button type="primary" @click="setQuery(query)">查询</el-button>
       </template>
-    </ESearch>
+    </ESearch> -->
 
     <ETable
       border

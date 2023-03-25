@@ -73,3 +73,21 @@ export function dateConvert(dateStr){
   const minute = date.getMinutes()
   return year + '-' + plusZero(month) + '-' + plusZero(day)
 }
+// 异步下载
+export function allDownloadFile(blob,fileName){
+  // 创建 a 标签
+  const tagA = document.createElement('a')
+  // 创建 blob 临时内存地址
+  const memoryUrl = window.URL.createObjectURL(blob)
+  // 设置 a 标签的 href、download、style 属性
+  tagA.href = memoryUrl
+  tagA.download = fileName
+  tagA.style.display = 'none'
+  // 插入 DOM
+  document.body.appendChild(tagA)
+  // 模拟用户点击
+  tagA.click()
+  // 释放资源、删除标签
+  window.URL.revokeObjectURL(memoryUrl)
+  document.body.removeChild(tagA)
+}

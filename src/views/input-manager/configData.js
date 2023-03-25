@@ -29,20 +29,22 @@ export const columns = [
     align: 'center'
   },
   {
-    prop: "address1",
-    label: "居住地址",
-    width: 200,
-    align: 'center'
-  },
-  {
     prop: "mobile_phone",
     label: "手机号码",
+    align: 'center',
+    width: 200
+  },
+  {
+    prop: "address1",
+    label: "居住地址",
+    width: 300,
     align: 'center'
   },
+
   {
     label: '申请状态',
     prop: 'status',
-    align: 'center'
+    align: 'center',
   },
   {
     label: "操作",
@@ -50,30 +52,30 @@ export const columns = [
     width: 300,
     align: 'center'
   },
-  {
-    label: "自定义HTML",
-    align: "center",
-    formatter() {
-      return `
-        <div>
-          <h3>自定义内容</h3>
-          <button>按钮</button>
-        </div>
-      `
-    }
-  },
-  {
-    label: "配送信息",
-    children: [
-      {
-        label: "地址",
-        children: [
-          { label: "省份", prop: "name" },
-          { label: "市区", prop: "address" },
-        ],
-      },
-    ],
-  },
+  // {
+  //   label: "自定义HTML",
+  //   align: "center",
+  //   formatter() {
+  //     return `
+  //       <div>
+  //         <h3>自定义内容</h3>
+  //         <button>按钮</button>
+  //       </div>
+  //     `
+  //   }
+  // },
+  // {
+  //   label: "配送信息",
+  //   children: [
+  //     {
+  //       label: "地址",
+  //       children: [
+  //         { label: "省份", prop: "name" },
+  //         { label: "市区", prop: "address" },
+  //       ],
+  //     },
+  //   ],
+  // },
 ]
 
 const sexOptions = [

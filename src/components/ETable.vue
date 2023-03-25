@@ -68,4 +68,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  .el-table{
+    margin-top: 16px;
+  }
+</style>

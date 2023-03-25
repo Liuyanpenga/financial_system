@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col :span="hasBtn ? 6 : 12">
+    <el-col :span="hasBtn ? 6 : 24">
       <el-input v-bind="$attrs" v-model="query" @keypress.enter.native="emitQuery"/>
     </el-col>
     <el-col v-if="hasBtn" :span="6">
