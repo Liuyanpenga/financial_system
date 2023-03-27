@@ -10,8 +10,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path:'/',
-    redirect:'/home'
+    path: '/',
+    redirect: '/home'
   },
 
   {
@@ -88,25 +88,29 @@ router.beforeEach((to, from, next) => {
   // 验证是否登录
   let decoded = isLogin()
   // console.log('解析的token', decoded)
-  if (isLogin()) {
-    let roleType = convertRole(decoded.type)
-    // console.log('交给Vuex管理的角色：', roleType)
-    // Vuex 存储用户数据
-    store.commit('user/changeUserInfo', { roleType })
-    store.commit('user/changeLogin', true)
-    // 登录过且加载过菜单
-    if (store.getters['user/userMenu'].length > 0) {
-      return next()
-    } else {
-      // 待加载菜单
-      return loadMenu(to, from, next)
-    }
-  } else {
+  if (!decoded) {
     // 如果没登录过 就跳转到登录页
     let lastPath = to.fullPath
     return next({ name: 'login', query: { redirect: lastPath } })
   }
-
+  let roleType = convertRole(decoded.type)
+  // console.log('交给Vuex管理的角色：', roleType)
+  // Vuex 存储用户数据
+  store.commit('user/changeUserInfo', { roleType })
+  store.commit('user/changeLogin', true)
+  // 登录过且加载过菜单
+  if (store.getters['user/userMenu'].length === 0) {
+    // 待加载菜单
+    return loadMenu(to, from, next)
+  }
+  // tag 记录路由记录
+  if(to?.meta?.title){
+    store.commit('tags/addTags',{
+      name:to.name,
+      title:to.meta.title
+    })
+  }
+  next();
 })
 
 

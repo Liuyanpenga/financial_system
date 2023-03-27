@@ -21,7 +21,12 @@
           </div>
         </el-header>
         <el-main>
-          <router-view />
+          <div class="tag-box">
+            <el-tag v-for="tag in tags" :key="tag.name" @click="$router.push(tag)"  @close="tagClose(tag)" closable>
+              {{ tag.title }}
+            </el-tag>
+          </div>
+            <router-view />
         </el-main>
         <el-footer>Footer</el-footer>
       </el-container>
@@ -43,6 +48,9 @@ export default {
     ...mapActions('user',{
       doLogout:'doLogout'
     }),
+    tagClose(tag){ 
+      this.$store.commit('tags/deleteTags',tag)
+    },
     async onCommand(e) {
       switch (e) {
         // 退出登录操作
@@ -68,6 +76,9 @@ export default {
       userMenu: "userMenu",
       userInfo: "userInfo",
     }),
+    ...mapGetters("tags",{
+      tags:"getTags"
+    })
   },
 };
 </script>
@@ -103,5 +114,13 @@ export default {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
+}
+.tag-box{
+  text-align: left;
+}
+.el-tag{
+ margin-right: 8px;
+ margin-bottom: 8px;
+ cursor: pointer;
 }
 </style>
