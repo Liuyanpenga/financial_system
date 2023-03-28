@@ -1,5 +1,4 @@
 import { deepClone } from "@/utils"
-import { getLoanList } from "@/api/loan";
 
 export default {
   data() {
@@ -10,7 +9,7 @@ export default {
         pageSize: 10,
         layout: "total, sizes, prev, pager, next, jumper",
         total: 100,
-        query:''
+        query: ''
       }
     }
   },
@@ -24,10 +23,10 @@ export default {
       this.pager.currentPage = val
       this.load()
     },
-    setTotal(total){
+    setTotal(total) {
       this.pager.total = total
     },
-    setQuery(query){
+    setQuery(query) {
       this.pager.query = query
       this.pager.currentPage = 1
       this.load()
@@ -45,7 +44,7 @@ export default {
         pageSize: this.pager.pageSize,
       }
       // 附加查询参数 name
-      if(this.pager.query&&this.pager.query.trim() !== ''){
+      if (this.pager.query && this.pager.query.trim() !== '') {
         params.name = this.pager.query
       }
       return params

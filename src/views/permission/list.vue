@@ -8,6 +8,13 @@
       :columns="columns"
       :config="tableConfig"
     >
+    <template #reg_time="{ row }">
+        <span>{{ row.reg_time | date }}</span>
+      </template>
+
+       <template #role_name="{ row }">
+        <span>{{ row.role_name | role }}</span>
+      </template>
 
     </ETable>
   </div>

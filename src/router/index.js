@@ -37,12 +37,9 @@ VueRouter.prototype.push = function push(location) {
 // 判断角色
 function convertRole(type) {
   switch (type) {
-    case 1:
-      return '审批专员'
-    case 2:
-      return '录入专员'
-    case 3:
-      return '管理员'
+    case 1: return '审批专员'
+    case 2: return '录入专员'
+    case 3: return '管理员'
   }
 }
 
@@ -71,7 +68,6 @@ function asyncRoutesHandler(routes) {
 async function loadMenu(to, from, next) {
   // 请求菜单数据
   let res = await loadAsyncRoutes()
-  // console.log('菜单数据', res)
   store.commit('user/setMenu', res.data)
   // 加载菜单
   const asyncRoutes = asyncRoutesHandler(res.data)

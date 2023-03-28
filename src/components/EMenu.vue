@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 判断是否有孩子 -->
-    <el-menu-item v-if="item.nonRenderChild || !item.children" :index="item.path">
+    <el-menu-item v-if="item.noRenderChild || !item.children" :index="item.path">
       <span>{{ item.meta.title }}</span>
     </el-menu-item>
     <el-submenu v-else :index="item.path">

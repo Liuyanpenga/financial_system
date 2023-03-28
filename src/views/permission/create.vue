@@ -33,6 +33,7 @@ export default {
       this.$refs.form.valid(async (data) => {
         delete data.confirmPwd;
         await doCreateRole(data);
+        this.$message.success('创建成功')
       });
     },
     resetForm() {

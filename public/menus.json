@@ -1,6 +1,6 @@
 [
   {
-    "nonRenderChild":true,
+    "noRenderChild":true,
     "path":"/home",
     "meta":{
       "title":"首页"

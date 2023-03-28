@@ -10,7 +10,7 @@ export default {
     userMenu(state) {
       return state.menu
     },
-    userInfo(state){
+    userInfo(state) {
       return state.userInfo
     }
   },
@@ -26,15 +26,15 @@ export default {
     }
   },
   actions: {
-    async doLogout({commit}){
+    async doLogout({ commit }) {
       await logout()
       window.sessionStorage.removeItem('token')
       // 选择性清空数据
-      commit('changeUserInfo',null)
-      commit('changeLogin',false)
-      commit('setMenu',[])
+      commit('changeUserInfo', null)
+      commit('changeLogin', false)
+      commit('setMenu', [])
       // 退出清空 tags
-      commit('tags/cleanTags',{},{root:true})
+      commit('tags/cleanTags', {}, { root: true })
       // 跳转
     }
   }
