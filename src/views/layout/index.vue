@@ -4,7 +4,7 @@
       <el-aside width="200px">
         <el-menu
           router
-          :default-active="defaultActive"
+          :default-active="getDefaultActive"
           unique-opened
           background-color="#282d2f"
           text-color="#fff"
@@ -26,7 +26,11 @@
               {{ tag.title }}
             </el-tag>
           </div>
-            <router-view />
+          <transition name="fade" mode="out-in">
+            <keep-alive :include="getInclude" :max="30">
+              <router-view />
+            </keep-alive>
+          </transition>
         </el-main>
         <el-footer>Footer</el-footer>
       </el-container>
@@ -68,17 +72,22 @@ export default {
     },
   },
   // 高亮
-  created() {
-    this.defaultActive = this.$route.path;
-  },
+  // created() {
+  //   this.defaultActive = this.$route.path;
+  // },
   computed: {
     ...mapGetters("user", {
       userMenu: "userMenu",
       userInfo: "userInfo",
     }),
     ...mapGetters("tags",{
-      tags:"getTags"
-    })
+      tags:"getTags",
+      getDefaultActive:"getDefaultActive"
+    }),
+    // 名称匹配的组件被缓存
+    getInclude(){
+      return this.tags.map((t) => t.name)
+    }
   },
 };
 </script>
@@ -123,4 +132,16 @@ export default {
  margin-bottom: 8px;
  cursor: pointer;
 }
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active below version 2.1.8 */
+{
+    opacity: 0;
+}
+
 </style>

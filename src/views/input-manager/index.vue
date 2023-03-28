@@ -59,7 +59,7 @@ import { editLoanUpdate, deleteLoanForm, submitLoanForm } from "@/api/loan";
 import pager from "@/mixins/pager";
 import crud from "@/mixins/crud";
 export default {
-  name: "Manger",
+  name: "input-manager",
   mixins: [pager, crud],
   data() {
     return {

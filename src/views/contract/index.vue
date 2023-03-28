@@ -30,6 +30,7 @@ import { allDownloadFile } from '@/utils/index'
 import { columns, tableConfig } from "./configData";
 import { createContractFile, downloadContractFile, createBlob } from '@/api/loan'
 export default {
+  name:'contract',
   mixins: [pager, crud],
   data() {
     return {

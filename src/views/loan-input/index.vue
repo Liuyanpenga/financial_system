@@ -11,11 +11,10 @@
 </template>
 
 <script>
-import EForm from "@/components/EForm.vue";
 import configData from "./configData";
 import {createLoanApi} from '@/api/loan'
 export default {
-  components: { EForm },
+  name:'loan-input',
   data() {
     return {
       configData,

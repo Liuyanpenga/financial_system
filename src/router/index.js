@@ -28,6 +28,12 @@ const router = new VueRouter({
   routes
 })
 
+// 解决 NavigationDuplicated: Avoided redundant navigation to current location 报错
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 // 判断角色
 function convertRole(type) {
   switch (type) {
@@ -110,6 +116,9 @@ router.beforeEach((to, from, next) => {
       title:to.meta.title
     })
   }
+  // 菜单高亮
+  store.commit('tags/changeDefaultActive',to.path)
+  
   next();
 })
 

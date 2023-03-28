@@ -33,6 +33,8 @@ export default {
       commit('changeUserInfo',null)
       commit('changeLogin',false)
       commit('setMenu',[])
+      // 退出清空 tags
+      commit('tags/cleanTags',{},{root:true})
       // 跳转
     }
   }
