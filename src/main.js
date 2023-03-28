@@ -14,7 +14,7 @@ import '@/plugins'
 Vue.use(dragTable)
 Vue.use(tableFilter)
 
-
+console.log(process.env.VUE_APP_URL,'测试VUE_APP_变量')
 Vue.config.productionTip = false
 
 new Vue({
